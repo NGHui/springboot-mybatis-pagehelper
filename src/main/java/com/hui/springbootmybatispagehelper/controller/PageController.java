@@ -26,7 +26,8 @@ public class PageController {
 
         PageHelper.startPage(pageNum, 5);
         List<Emp> emps = empMapper.selectByExample(null);
-        PageInfo<Emp> pageInfo = new PageInfo<Emp>(emps);
+        //PageInfo<Emp> pageInfo = new PageInfo<Emp>(emps);
+        PageInfo pageInfo = new PageInfo(emps,5);
         return pageInfo;
     }
 
