@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<classPathEntry location="F:/mysql/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"></classPathEntry>
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<!--添加了分页功能-->
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+		<!--覆盖生成XML文件-->
+		<plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+		<!--不生成注解-->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/crud"
+						userId="root"
+						password="huihui521">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- pojo生成的地方 -->
+		<javaModelGenerator targetPackage="com.hui.springbootmybatispagehelper.bean"
+							targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sql映射文件生成的地方 -->
+		<sqlMapGenerator targetPackage="mapper"
+						 targetProject=".\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- dao接口生成的地方 -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.hui.springbootmybatispagehelper.mapper" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 只要是数据库对应的pojo，我们都以T开头 -->
+		<!-- 指定要逆向的每一张表,用户表 -->
+		<!--<table tableName="ngh_articles" domainObjectName="Articles"></table>
+		<table tableName="ngh_comments" domainObjectName="Comments"></table>
+		<table tableName="ngh_labels" domainObjectName="Labels"></table>
+		<table tableName="ngh_set_artitle_label" domainObjectName="SetArtitleLabel"></table>
+		<table tableName="ngh_set_artitle_sort" domainObjectName="SetArtitleSort"></table>
+		<table tableName="ngh_sorts" domainObjectName="Sorts"></table>
+		<table tableName="ngh_user_friends" domainObjectName="UserFriends"></table>-->
+		<!--<table tableName="ngh_user" domainObjectName="User"></table>
+		<table tableName="ngh_articles" domainObjectName="Articles"></table>-->
+		<table tableName="tbl_emp" domainObjectName="Emp"></table>
+
+
+	</context>
+</generatorConfiguration>
